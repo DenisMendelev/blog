@@ -1,0 +1,21 @@
+@use "./styles.scss" as *;
+@import "./normalize.css";
+
+body {
+  margin: 0;
+}
+
+:root {
+  font-family: $font-family;
+  line-height: 1.5;
+  font-weight: 400;
+  max-width: 1480px;
+  margin: 0 auto;
+  text-align: center;
+  background: $background-color-root;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}

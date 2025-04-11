@@ -1,0 +1,111 @@
+@use "../../../app/styles/styles.scss" as *;
+
+.signup-form-container {
+  background: $background-color-container;
+  min-height: calc(100vh - 80px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  font-family: $font-roboto;
+}
+
+.signup-form {
+  max-width: 400px;
+  width: 100%;
+  padding: 20px;
+  background: $background-color-post;
+  box-shadow: 0px 0px 13px 0px $color-shadow-article;
+  border-radius: 4px;
+
+  h2 {
+    margin: 0 0 20px;
+    text-align: center;
+    font-size: $font-size-24;
+    font-weight: 600;
+  }
+
+  .form-group {
+    margin-bottom: 15px;
+
+    label {
+      display: block;
+      margin-bottom: 5px;
+      font-size: $font-size-14;
+      color: $text-color-gray;
+    }
+
+    input {
+      width: 94%;
+      padding: 10px;
+      border: 1px solid $color-border;
+      border-radius: 4px;
+      font-size: $font-size-14;
+    }
+
+    .error {
+      color: $error-color;
+      font-size: 12px;
+      margin-top: 5px;
+      display: block;
+    }
+  }
+
+  .checkbox-group {
+    margin-bottom: 20px;
+
+    .checkbox-label {
+      display: flex;
+      justify-content: center;
+      gap: 5px;
+      font-size: $font-size-14;
+
+      input {
+        width: 16px;
+      }
+    }
+
+    .ant-checkbox-wrapper {
+      font-size: $font-size-14;
+      color: $text-color-gray;
+
+      .ant-checkbox {
+        .ant-checkbox-inner {
+          border-color: $color-border;
+        }
+
+        &.ant-checkbox-checked {
+          .ant-checkbox-inner {
+            background-color: $background-color-post-blue;
+            border-color: $color-border-blue;
+          }
+        }
+      }
+    }
+
+    .error {
+      margin-top: 5px;
+    }
+  }
+
+  .ant-btn {
+    padding: 10px;
+    font-size: $font-size-16;
+  }
+
+  .signup-link {
+    margin-top: 15px;
+    text-align: center;
+    font-size: $font-size-14;
+    color: $text-color-gray;
+
+    a {
+      color: $text-color-blue;
+      text-decoration: none;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+}

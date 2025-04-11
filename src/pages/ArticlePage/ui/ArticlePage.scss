@@ -1,0 +1,151 @@
+@use "../../../app/styles/styles.scss" as *;
+
+.article-page-container {
+  background: $background-color-container;
+  padding-top: 10px;
+  min-height: calc(100vh - 80px);
+
+  .article-page {
+    max-width: 940px;
+    margin: 20px auto;
+    padding: 20px;
+    background: $background-color-post;
+    box-shadow: 0px 0px 13px 0px $color-shadow-article;
+  }
+
+  .article-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+
+    .article-title {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+
+      .title-likes {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+
+        h1 {
+          color: $text-color-blue;
+          margin: 0;
+          font-size: $font-size-24;
+          font-weight: 600;
+        }
+
+        .likes {
+          display: flex;
+          align-items: center;
+          gap: 5px;
+
+          .like-button {
+            font-size: 16px;
+            transition: color 0.3s;
+
+            &.favorited {
+              color: $error-color;
+            }
+          }
+
+          .likes-count {
+            font-size: $font-size-16;
+          }
+        }
+      }
+
+      .article-tags {
+        display: flex;
+        gap: 5px;
+
+        .ant-tag {
+          width: max-content;
+          margin: 0;
+        }
+      }
+    }
+
+    .article-author {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+
+      .author-info {
+        display: flex;
+        flex-direction: column;
+        text-align: right;
+
+        .author-name {
+          margin: 0;
+          font-size: $font-size-20;
+          line-height: 28px;
+          font-weight: 500;
+        }
+
+        .author-date {
+          margin: 0;
+          color: $text-color-50;
+          font-size: $font-size-14;
+        }
+      }
+
+      .avatar {
+        width: 48px;
+        height: 48px;
+        border-radius: 50%;
+      }
+    }
+  }
+}
+.article-actions {
+  margin-bottom: 20px;
+  text-align: right;
+
+  .ant-btn.button-edit {
+    color: $btn-primary-action-green;
+    border-color: $btn-primary-action-green;
+
+    &:hover {
+      color: $text-color-white;
+      background: $btn-primary-action-green;
+      border-color: $btn-primary-action-green;
+    }
+  }
+
+  .ant-btn.button-delete.ant-btn-dangerous {
+    color: $error-color;
+    border-color: $error-color;
+
+    &:hover {
+      color: $text-color-white;
+      background: $error-color;
+      border-color: $error-color;
+    }
+  }
+}
+
+.article-description {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 0 20px 0;
+
+  p {
+    width: 85%;
+    color: $text-color-50;
+    text-align: start;
+    font-size: $font-size-14;
+    line-height: 1.5;
+  }
+}
+
+.article-body {
+  p {
+    margin: 0 0 15px;
+    color: $text-color-75;
+    font-size: $font-size-18;
+    text-align: start;
+    line-height: 1.6;
+  }
+}

@@ -1,0 +1,87 @@
+@use "../../../../app/styles/styles.scss" as *;
+
+.post-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+
+  .post-title {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+
+    .post-likes {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+
+      h2 {
+        color: $text-color-blue;
+        margin: 0;
+      }
+
+      .likes {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+
+        .like-button {
+          font-size: $font-size-16;
+          transition: color 0.3s;
+
+          &.favorited {
+            color: $error-color;
+          }
+        }
+
+        .likes-count {
+          color: $text-color-75;
+          font-size: $font-size-14;
+          line-height: 22px;
+        }
+      }
+    }
+
+    .post-tag {
+      display: flex;
+
+      .ant-tag {
+        width: max-content;
+        margin-top: 5px;
+      }
+    }
+  }
+
+  .post-author {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    .author-info {
+      display: flex;
+      flex-direction: column;
+
+      .author-name {
+        margin: 0;
+      }
+
+      .author-date {
+        margin: 0;
+      }
+    }
+
+    .avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+    }
+  }
+}
+
+.post-excerpt {
+  margin: 0;
+  width: 80%;
+  text-align: start;
+  padding-left: 15px;
+}
