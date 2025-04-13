@@ -37,10 +37,6 @@ export const likeArticleApi = createApi({
                   favoritesCount:
                     draft.articles[articleIndex].favoritesCount + 1,
                 };
-                console.log(
-                  `Optimistically updated getArticles cache for page ${currentPage} (favorited):`,
-                  draft
-                );
               }
             }
           )
@@ -58,10 +54,6 @@ export const likeArticleApi = createApi({
                 );
                 if (articleIndex !== -1) {
                   draft.articles[articleIndex] = data;
-                  console.log(
-                    `Updated getArticles cache with server data for page ${currentPage} (favorited):`,
-                    draft
-                  );
                 }
               }
             )
@@ -105,10 +97,6 @@ export const likeArticleApi = createApi({
                   favoritesCount:
                     draft.articles[articleIndex].favoritesCount - 1,
                 };
-                console.log(
-                  `Optimistically updated getArticles cache for page ${currentPage} (unfavorited):`,
-                  draft
-                );
               }
             }
           )
@@ -126,10 +114,6 @@ export const likeArticleApi = createApi({
                 );
                 if (articleIndex !== -1) {
                   draft.articles[articleIndex] = data;
-                  console.log(
-                    `Updated getArticles cache with server data for page ${currentPage} (unfavorited):`,
-                    draft
-                  );
                 }
               }
             )

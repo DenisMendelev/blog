@@ -99,6 +99,10 @@ const SignUp = () => {
                 value: 20,
                 message: "Username must not exceed 20 characters",
               },
+              validate: {
+                noSpaces: (value) =>
+                  /^\S*$/.test(value) || "Username must not contain spaces",
+              },
             })}
           />
           {errors.username && (
@@ -116,6 +120,10 @@ const SignUp = () => {
                 value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
                 message: "Please enter a valid email",
               },
+              validate: {
+                noSpaces: (value) =>
+                  /^\S*$/.test(value) || "Email must not contain spaces",
+              },
             })}
           />
           {errors.email && (
@@ -132,6 +140,10 @@ const SignUp = () => {
               minLength: {
                 value: 6,
                 message: "Password needs to be at least 6 characters",
+              },
+              validate: {
+                noSpaces: (value) =>
+                  /^\S*$/.test(value) || "Password must not contain spaces",
               },
               maxLength: {
                 value: 40,

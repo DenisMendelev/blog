@@ -24,10 +24,6 @@ export const deleteArticleApi = createApi({
               if (index !== -1) {
                 draft.articles.splice(index, 1);
                 draft.articlesCount -= 1;
-                console.log(
-                  `Optimistically updated getArticles cache for page ${page} after deletion:`,
-                  draft
-                );
               }
             }
           )
@@ -35,12 +31,10 @@ export const deleteArticleApi = createApi({
 
         try {
           await queryFulfilled;
-          console.log(`Article with slug ${slug} successfully deleted`);
         } catch (err) {
           patchResult.undo();
           console.error("Error deleting article:", err);
         }
-
         dispatch(postApi.util.invalidateTags(["Articles"]));
       },
       invalidatesTags: ["Articles"],

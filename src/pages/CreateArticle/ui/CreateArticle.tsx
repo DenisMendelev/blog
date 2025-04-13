@@ -74,10 +74,8 @@ const CreateArticle = () => {
           tagList: data.tagList.filter((tag) => tag.trim() !== ""),
         },
       }).unwrap();
-      console.log("Article created:", response.article);
       navigate(`/articles/${response.article.slug}`, { replace: true });
     } catch (err) {
-      console.error("Error creating article:", err);
       const serverError = err as ServerError;
       if (serverError.status === 422 && serverError.data?.errors) {
         const serverErrors = serverError.data.errors;

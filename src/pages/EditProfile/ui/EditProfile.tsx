@@ -45,7 +45,6 @@ const EditProfile = () => {
 
   const onSubmit = async (data: EditProfileFormData) => {
     try {
-      console.log("Submitting profile update with data:", data);
       const response = await updateUser({
         username: data.username,
         email: data.email,
@@ -59,10 +58,8 @@ const EditProfile = () => {
       };
 
       dispatch(setUser(updatedUser));
-      console.log("Profile updated successfully, new user data:", updatedUser);
       navigate("/articles");
     } catch (err) {
-      console.error("Error updating profile:", err);
       const serverError = err as ServerError;
       if (serverError.status === 422 && serverError.data?.errors) {
         const serverErrors = serverError.data.errors;
@@ -103,6 +100,10 @@ const EditProfile = () => {
                 value: 20,
                 message: "Username must not exceed 20 characters",
               },
+              validate: {
+                noSpaces: (value) =>
+                  /^\S*$/.test(value) || "Username must not contain spaces",
+              },
             }}
             render={({ field }) => <Input placeholder="Username" {...field} />}
           />
@@ -122,6 +123,10 @@ const EditProfile = () => {
               pattern: {
                 value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
                 message: "Please enter a valid email",
+              },
+              validate: {
+                noSpaces: (value) =>
+                  /^\S*$/.test(value) || "Email must not contain spaces",
               },
             }}
             render={({ field }) => (
@@ -145,6 +150,13 @@ const EditProfile = () => {
               maxLength: {
                 value: 40,
                 message: "Password must not exceed 40 characters",
+              },
+              validate: {
+                noSpaces: (value) =>
+                  value === undefined ||
+                  value === "" ||
+                  (/^\S*$/.test(value) && value !== undefined) ||
+                  "Password must not contain spaces",
               },
             }}
             render={({ field }) => (

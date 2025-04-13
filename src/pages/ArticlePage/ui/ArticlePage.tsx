@@ -6,7 +6,7 @@ import { useDeleteArticleMutation } from "../../../features/DeleteArticle";
 import { useLikeArticle } from "../../../features/Like";
 import { useParams, Link } from "react-router-dom";
 import ReactMarkdown from "react-markdown";
-import { Tag, Button } from "antd";
+import { Tag, Button, Popconfirm } from "antd"; // Заменяем Modal на Popconfirm
 import { HeartOutlined, HeartFilled } from "@ant-design/icons";
 import { useEffect } from "react";
 import "./ArticlePage.scss";
@@ -52,7 +52,6 @@ const ArticlePage = () => {
 
   const handleDelete = async () => {
     if (!slug) {
-      console.error("Slug is undefined, cannot delete article");
       return;
     }
     try {
@@ -122,14 +121,19 @@ const ArticlePage = () => {
           <p>{article.description}</p>
           {isAuthor && (
             <div className="article-actions">
-              <Button
-                className="button-delete"
-                danger
-                onClick={handleDelete}
-                disabled={isDeleting}
+              <Popconfirm
+                title="Delete the article"
+                description="Are you sure to delete this article?"
+                onConfirm={handleDelete}
+                okText="Yes"
+                cancelText="No"
+                placement="top"
+                okButtonProps={{ danger: true }}
               >
-                {isDeleting ? "Deleting..." : "Delete"}
-              </Button>
+                <Button className="button-delete" danger disabled={isDeleting}>
+                  {isDeleting ? "Deleting..." : "Delete"}
+                </Button>
+              </Popconfirm>
               <Link to={`/articles/${slug}/edit`}>
                 <Button className="button-edit" style={{ marginLeft: "10px" }}>
                   Edit

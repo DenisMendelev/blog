@@ -18,24 +18,16 @@ export const useLikeArticle = (slug: string, page?: number) => {
 
   const handleFavoriteToggle = async (currentFavorited: boolean) => {
     if (!user) {
-      console.log("User not authenticated, redirecting to sign-in");
       navigate("/sign-in");
       return;
     }
 
-    console.log(
-      `Toggling favorite for slug: ${slug}, currentFavorited: ${currentFavorited}`
-    );
     const mutation = currentFavorited ? unfavoriteArticle : favoriteArticle;
     try {
       const updatedArticle = await mutation({
         slug,
         currentPage: page,
       }).unwrap();
-      console.log(
-        "Mutation successful, updated article from server:",
-        updatedArticle
-      );
 
       postApi.util.updateQueryData("getArticleBySlug", slug, (draft: Post) => {
         Object.assign(draft, updatedArticle);

@@ -56,6 +56,10 @@ const SignIn = () => {
                 value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
                 message: "Please enter a valid email",
               },
+              validate: {
+                noSpaces: (value) =>
+                  /^\S*$/.test(value) || "Email must not contain spaces",
+              },
             })}
           />
           {errors.email && (

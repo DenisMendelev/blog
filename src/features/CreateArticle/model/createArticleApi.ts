@@ -57,7 +57,6 @@ export const createArticleApi = createApi({
               };
               draft.articles.unshift(newArticle);
               draft.articlesCount += 1;
-              console.log("Optimistically updated getArticles cache:", draft);
             }
           )
         );
@@ -78,10 +77,6 @@ export const createArticleApi = createApi({
                   draft.articles.unshift(data.article);
                   draft.articlesCount += 1;
                 }
-                console.log(
-                  "Updated getArticles cache with server data:",
-                  draft
-                );
               }
             )
           );
