@@ -6,7 +6,7 @@ import { useDeleteArticleMutation } from "../../../features/DeleteArticle";
 import { useLikeArticle } from "../../../features/Like";
 import { useParams, Link } from "react-router-dom";
 import ReactMarkdown from "react-markdown";
-import { Tag, Button, Popconfirm } from "antd";
+import { Tag, Button, Popconfirm, Spin } from "antd";
 import { HeartOutlined, HeartFilled } from "@ant-design/icons";
 import { useEffect } from "react";
 import "./ArticlePage.scss";
@@ -61,7 +61,12 @@ const ArticlePage = () => {
     }
   };
 
-  if (isLoading) return <div>Loading...</div>;
+  if (isLoading)
+    return (
+      <div className="loader-container">
+        <Spin size="large" />
+      </div>
+    );
   if (error) return <div>Error: {error.toString()}</div>;
   if (!article) return null;
 

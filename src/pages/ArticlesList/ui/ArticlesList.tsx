@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import "./ArticlesList.scss";
 import PostCard from "../../../entities/Post/ui/PostCard/PostCard";
-import { Pagination } from "antd";
+import { Pagination, Spin } from "antd";
 import { useDispatch } from "react-redux";
 import { useSearchParams } from "react-router-dom";
 import { useGetArticlesQuery } from "../../../entities/Post";
@@ -30,7 +30,11 @@ const ArticlesList = () => {
   const handleFavoriteToggleCallback = () => {};
 
   if (isLoading) {
-    return <div>Loading...</div>;
+    return (
+      <div className="loader-container">
+        <Spin size="large" />
+      </div>
+    );
   }
   if (error) {
     return <div>Error: {error.toString()}</div>;
