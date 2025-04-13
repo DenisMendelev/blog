@@ -61,7 +61,7 @@ const SignUp = () => {
         if (serverErrors.username) {
           setError("username", {
             type: "server",
-            message: `Username ${serverErrors.username}`,
+            message: `Username ${serverErrors.username} can only contain Latin letters and numbers`,
           });
         }
         if (serverErrors.email) {
