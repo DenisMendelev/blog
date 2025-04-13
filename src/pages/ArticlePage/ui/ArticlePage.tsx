@@ -6,7 +6,7 @@ import { useDeleteArticleMutation } from "../../../features/DeleteArticle";
 import { useLikeArticle } from "../../../features/Like";
 import { useParams, Link } from "react-router-dom";
 import ReactMarkdown from "react-markdown";
-import { Tag, Button, Popconfirm } from "antd"; // Заменяем Modal на Popconfirm
+import { Tag, Button, Popconfirm } from "antd";
 import { HeartOutlined, HeartFilled } from "@ant-design/icons";
 import { useEffect } from "react";
 import "./ArticlePage.scss";
